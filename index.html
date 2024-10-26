@@ -1,0 +1,170 @@
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <navbar>
+    <div class="logo"><ion-icon name="train-outline"></ion-icon></div>
+    <h1>Emissions de CO2 de ton trajet</h1>
+  </navbar>
+
+  <div id="cursor" class="cursor"></div>
+
+  <section>
+    <div class="card first">
+      <h2>Ton trajet</h2>
+      <hr>
+      <div class="text-wrapper">
+        Distance parcourue (en km) :
+        <input type="number" id="distanceInput">
+        <br>
+        Mode de transport :
+        <select name="modeSelect" id="modeSelect">
+          <option value="train">Train</option>
+          <option value="plane">Avion</option>
+          <option value="car">Voiture</option>
+        </select>
+      </div>
+    </div>
+
+    <!--This is the train section-->
+
+    <div class="output-section second card">
+      <div id="trainTab">
+        <h2>Paramètres train</h2>
+        <hr>
+        <div class="text-wrapper">
+          <label for="trainTypeSelect">Quel type de train as-tu pris ?</label>
+          <select name="trainTypeSelect" id="trainTypeSelect">
+            <option value="ter">TER</option>
+            <option value="rer">RER</option>
+            <option value="tgv">TGV</option>
+            <option value="ic">Train de nuit et Intercités</option>
+          </select>
+        </div>
+        <div class="text-wrapper">
+          <label for="countryTypeSelect">Dans quel pays le trajet a-t-il été effectué ?</label>
+          <select name="countryTypeSelect" id="countryTypeSelect">
+            <option value="fr">France</option>
+          </select>
+        </div>
+      </div>
+
+      <!--This is the plane section-->
+
+      <div id="planeTab" class="hidden">
+        <h2>Paramètres avion</h2>
+        <hr>
+        <div class="text-wrapper">
+          <label for="multiPlaneSelect">Comment veux-tu prendre en compte l'impact des autres polluants (trainées de condensation...) ?</label>
+          <select name="multiPlaneSelect" id="multiPlaneSelect">
+            <option value="x0">Ne pas prendre en compte</option>
+            <option value="x2">Multiplié par 2</option>
+            <option selected value="x3">Multiplié par 3</option>
+          </select>
+        </div>
+      </div>
+
+      <!--This is the car section-->
+
+      <div id="carTab" class="hidden">
+        <h2>Paramètres voiture</h2>
+        <hr>
+        <div class="text-wrapper">
+          <label for="typeCarSelect">Quel type de voiture ?</label>
+          <select name="typeCarSelect" id="typeCarSelect">
+            <option value="fuel">Essence</option>
+            <option value="diesel">Diesel</option>
+            <option value="elec">Electrique</option>
+          </select>
+        </div>
+        <div class="text-wrapper">
+          <label for="sizeCarSelect">Quel taille de voiture ?</label>
+          <select name="sizeCarSelect" id="sizeCarSelect">
+            <option value="small">Citadine</option>
+            <option value="medium">Moyenne</option>
+            <option value="big">SUV ou sportive</option>
+          </select>
+        </div>
+        <div class="text-wrapper">
+          <label for="yearSelect">De quand date ta voiture ?</label>
+          <select name="yearSelect" id="yearSelect">
+            <option value="2020">2020</option>
+            <option value="2010">2010</option>
+            <option value="2000">2000</option>
+            <option value="1990">1990</option>
+          </select>
+        </div>
+        <div class="text-wrapper">
+          <label for="passengersCarSelect">Combien de passagers ?</label>
+          <select name="passengersCarSelect" id="passengersCarSelect">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <div class="text-wrapper">
+          <label for="roadSelect">Où as-tu conduis ?</label>
+          <select name="roadSelect" id="roadSelect">
+            <option value="city">En ville</option>
+            <option value="both">Mixte</option>
+            <option value="highway">Autoroute</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="card third ">
+      <h2>Résultat</h2>
+      <hr>
+      <div class="text-wrapper">
+        <span id=output>0</span> kg de CO2 émis avec ce moyen de transport
+      </div>
+    </div>
+
+    <div class="card fourth">
+      <h2>Comprendre les calculs</h2>
+      <hr>
+      <div class="text-wrapper">
+        <a href="assets/doc/Methodo calculs co2 transports.pdf" id="documentLink" target="_blank">Clique ici pour télécharger la méthodologie de calcul</a>
+      </div>
+    </div>
+
+    <div class="card fifth">
+      <h2>Plus aller plus loin</h2>
+      <hr>
+      <div class="text-wrapper">
+        <p>Quelques liens utiles pour voyager en train:</p>
+        <ul>
+          <li><a href="https://www.mollow.eu/" id="mollowLink" target="_blank">Mollow</a></li>
+          <li><a href="https://www.hourrail.voyage/fr" id="hourrailLink" target="_blank">Hourrail</a></li>
+        </ul>
+
+        <p>Est-ce que la voiture électrique est écolo ?</p>
+        <ul>
+          <li><a href="https://bonpote.com/ocean-de-fake-news-sur-la-voiture-electrique/" id="elecCar1Link" target="_blank">Article BonPote</a></li>
+          <li><a href="https://www.carbone4.com/analyse-faq-voiture-electrique" id="elecCar2Link" target="_blank">Article Carbone4</a></li>
+        </ul>
+
+        <p>L'avion pollue, à quel point ?</p>
+        <ul>
+          <li><a href="https://www.greenpeace.fr/voyage-ecologique/reduire-ses-voyages-en-avion-une-solution-pour-climat/" id="plane1Link" target="_blank">Article GreenPeace</a></li>
+          <li><a href="https://bonpote.com/10-chiffres-a-connaitre-sur-lavion-et-le-climat/" id="plane2Link" target="_blank">Article BonPote</a></li>
+        </ul>
+
+      </div>
+    </div>
+
+  </section>
+
+
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+  <script src="script.js"></script> 
+</body>
