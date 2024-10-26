@@ -7,12 +7,11 @@ Ce projet calcule et compare les émissions de CO₂ associées à différents m
 1. [Aperçu du Projet](#aperçu-du-projet)
 2. [Fonctionnalités](#fonctionnalités)
 3. [Technologies Utilisées](#technologies-utilisées)
-4. [Installation](#installation)
-5. [Utilisation](#utilisation)
-6. [Sources de Données](#sources-de-données)
-7. [Développement Futur](#développement-futur)
-8. [Contribuer](#contribuer)
-9. [Licence](#licence)
+4. [Utilisation](#utilisation)
+5. [Sources de Données](#sources-de-données)
+6. [Développement Futur](#développement-futur)
+7. [Contribuer](#contribuer)
+8. [Licence](#licence)
 
 ## Aperçu du Projet
 
