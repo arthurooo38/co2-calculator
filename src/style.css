@@ -31,9 +31,9 @@ body {
 }
 
 .card {
-  background-color: #f0fff0;
+  background-color: #ffffff;
   padding: 20px 0px;
-  border-radius: 6px;
+  border-radius: 3px;
   border: solid 2px black;
   flex: 1 1 320px;
 }
@@ -71,14 +71,14 @@ input {
   border: none;
   border-bottom: solid 2px #001011;
   background-color: white;
-  border-radius: 6px 6px 0px 0px;
+  border-radius: 3px 3px 0px 0px;
   transition: 0.2s;
 }
 
 input:focus {
   outline: solid 2px #001011;
   border-bottom: solid 2px transparent;
-  border-radius: 6px 6px 0px 0px;
+  border-radius: 3px 3px 0px 0px;
 }
 
 select {
@@ -90,7 +90,7 @@ select {
   border: none;
   border-bottom: solid 2px #001011;
   background-color: white;
-  border-radius: 6px 6px 0px 0px;
+  border-radius: 3px 3px 0px 0px;
 }
 
 a {
@@ -104,6 +104,9 @@ a:hover {
   color: #001011;
   text-decoration: underline;
 }
+
+
+
 
 section {
   max-width: 1200px;
@@ -136,6 +139,14 @@ ul {
   list-style: inside;
 }
 
+
+ion-icon {
+  font-size: 24px;
+  color: #fe6f5e;
+}
+
+
+
 .cursor {
   position: fixed;
   width: 0px;
@@ -152,7 +163,7 @@ ul {
   background-size: cover;
   width: 160px;
   height: 120px;
-  border-radius: 6px;
+  border-radius: 3px;
   transform: translate(0%, 0%);
 }
 .mollowLink {
