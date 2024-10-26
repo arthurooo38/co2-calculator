@@ -1,0 +1,182 @@
+* {
+  font-family: "Afacad Flux", sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+.hidden {
+  display: none;
+}
+
+navbar {
+  display: flex;
+  align-items: center;
+  padding: 0px 30px 0px 30px;
+  gap: 30px;
+  border-bottom: solid 2px black;
+  background-color: white;
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 1px;
+  padding: 20px 30px 20px 30px;
+  border-left: solid 2px black;
+  flex: auto;
+}
+
+body {
+  background-color: #fff5f3;
+}
+
+.card {
+  background-color: #f0fff0;
+  padding: 20px 0px;
+  border-radius: 6px;
+  border: solid 2px black;
+  flex: 1 1 320px;
+}
+
+.output-section {
+  flex: 1 1 400px;
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.6px;
+  margin: 0px 20px 0px 20px;
+}
+
+hr {
+  margin: 20px 0px 20px 0px;
+  color: #001011;
+}
+
+.text-wrapper {
+  margin: 0px 20px 0px 20px;
+  line-height: 100%;
+}
+label {
+  margin: 8px;
+}
+input {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+  padding: 8px;
+  margin: 4px 8px 4px 8px;
+  border: none;
+  border-bottom: solid 2px #001011;
+  background-color: white;
+  border-radius: 6px 6px 0px 0px;
+  transition: 0.2s;
+}
+
+input:focus {
+  outline: solid 2px #001011;
+  border-bottom: solid 2px transparent;
+  border-radius: 6px 6px 0px 0px;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  padding: 8px;
+  margin: 8px 0px 0px 0px;
+  border: none;
+  border-bottom: solid 2px #001011;
+  background-color: white;
+  border-radius: 6px 6px 0px 0px;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+a:hover {
+  color: #001011;
+  text-decoration: underline;
+}
+
+section {
+  max-width: 1200px;
+  margin: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.first {
+  background-color: #fe6f5e;
+}
+.second {
+  background-color: #eefe5d;
+}
+.third {
+  background-color: #5deefe;
+}
+.fourth {
+  background-color: #6d5dfe;
+}
+.fifth {
+  background-color: #00FFBF;
+}
+
+ul {
+  margin-top: 8px;
+  margin-bottom: 16px;
+  list-style: inside;
+}
+
+.cursor {
+  position: fixed;
+  width: 0px;
+  height: 0px;
+  background-color: black;
+  transition: width 0.2s, height 0.2s, transform 0.2s;
+  pointer-events: none;
+}
+
+.anchor-cursor {
+  background-color: white;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 160px;
+  height: 120px;
+  border-radius: 6px;
+  transform: translate(0%, 0%);
+}
+.mollowLink {
+  background-image: url("assets/img/mollow.png");
+}
+.hourrailLink {
+  background-image: url("assets/img/hourrail.png");
+}
+.elecCar1Link {
+  background-image: url("assets/img/electric-car-1.jpg");
+  transform: translate(0%, -100%);
+}
+.elecCar2Link {
+  background-image: url("assets/img/electric-car-2.jpg");
+  transform: translate(0%, -100%);
+}
+.plane1Link {
+  background-image: url("assets/img/plane-1.jpg");
+  transform: translate(0%, -100%);
+}
+.plane2Link {
+  background-image: url("assets/img/plane-2.jpg");
+  transform: translate(0%, -100%);
+}
+.documentLink {
+  background-image: url("assets/img/pdf-file.jpg");
+}
