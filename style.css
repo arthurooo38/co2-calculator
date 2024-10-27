@@ -1,5 +1,5 @@
 * {
-  font-family: "Afacad Flux", sans-serif;
+  font-family: "Nunito", sans-serif;
   padding: 0px;
   margin: 0px;
 }
@@ -13,7 +13,7 @@ navbar {
   align-items: center;
   padding: 0px 30px 0px 30px;
   gap: 30px;
-  border-bottom: solid 2px black;
+  border-bottom: solid 2px #E2E7F9;
   background-color: white;
 }
 
@@ -21,20 +21,22 @@ h1 {
   text-transform: uppercase;
   font-size: 20px;
   letter-spacing: 1px;
-  padding: 20px 30px 20px 30px;
-  border-left: solid 2px black;
+  padding: 20px 30px 20px 0px;
+  font-weight: 800;
+  color: #3457D5;
   flex: auto;
 }
 
 body {
-  background-color: #fff5f3;
+  background-color: #F0F3FC;
 }
 
 .card {
   background-color: #ffffff;
   padding: 20px 0px;
-  border-radius: 3px;
-  border: solid 2px black;
+  border-radius: 10px;
+  border: solid 2px #E2E7F9;
+  box-shadow: 0px 3px #E2E7F9;
   flex: 1 1 320px;
 }
 
@@ -42,22 +44,22 @@ body {
   flex: 1 1 400px;
 }
 
+.first {
+  flex: 1 1 400px;
+}
+
 h2 {
   text-transform: uppercase;
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 700;
   letter-spacing: 0.6px;
   margin: 0px 20px 0px 20px;
-}
-
-hr {
-  margin: 20px 0px 20px 0px;
-  color: #001011;
 }
 
 .text-wrapper {
   margin: 0px 20px 0px 20px;
   line-height: 100%;
+  color: #5e5e5e;
 }
 label {
   margin: 8px;
@@ -69,16 +71,15 @@ input {
   padding: 8px;
   margin: 4px 8px 4px 8px;
   border: none;
-  border-bottom: solid 2px #001011;
-  background-color: white;
-  border-radius: 3px 3px 0px 0px;
+  background-color: #E2E7F9;
+  border-radius: 10px;
   transition: 0.2s;
+  max-width: 100px;
 }
 
 input:focus {
-  outline: solid 2px #001011;
-  border-bottom: solid 2px transparent;
-  border-radius: 3px 3px 0px 0px;
+  outline: solid 2px #3457D5;
+  border-radius: 2px;
 }
 
 select {
@@ -88,9 +89,13 @@ select {
   padding: 8px;
   margin: 8px 0px 0px 0px;
   border: none;
-  border-bottom: solid 2px #001011;
-  background-color: white;
-  border-radius: 3px 3px 0px 0px;
+  background-color: #E2E7F9;
+  border-radius: 10px;
+  text-align: center;
+}
+select:focus {
+  outline: solid 2px #3457D5;
+  border-radius: 2px;
 }
 
 a {
@@ -101,7 +106,7 @@ a {
 }
 
 a:hover {
-  color: #001011;
+  color: #3457D5;
   text-decoration: underline;
 }
 
@@ -117,22 +122,6 @@ section {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-.first {
-  background-color: #fe6f5e;
-}
-.second {
-  background-color: #eefe5d;
-}
-.third {
-  background-color: #5deefe;
-}
-.fourth {
-  background-color: #6d5dfe;
-}
-.fifth {
-  background-color: #00FFBF;
-}
-
 ul {
   margin-top: 8px;
   margin-bottom: 16px;
@@ -142,52 +131,27 @@ ul {
 
 ion-icon {
   font-size: 24px;
-  color: #fe6f5e;
+  color: #3457D5;
 }
 
-
-
-.cursor {
-  position: fixed;
-  width: 0px;
-  height: 0px;
-  background-color: black;
-  transition: width 0.2s, height 0.2s, transform 0.2s;
-  pointer-events: none;
+#documentLink {
+  background-color: #3457D5;
+  color: white;
+  padding: 12px 20px;
+  margin: 30px 0px;
+  border-radius: 10px;
+  border: solid 2px #172A6E;
+  box-shadow: 0px 2px #172A6E;
+  transition: 0.2s;  
 }
 
-.anchor-cursor {
-  background-color: white;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 160px;
-  height: 120px;
-  border-radius: 3px;
-  transform: translate(0%, 0%);
+#documentLink:hover {
+   text-decoration: none;
+   box-shadow: 0px 4px #172A6E;     
 }
-.mollowLink {
-  background-image: url("assets/img/mollow.png");
-}
-.hourrailLink {
-  background-image: url("assets/img/hourrail.png");
-}
-.elecCar1Link {
-  background-image: url("assets/img/electric-car-1.jpg");
-  transform: translate(0%, -100%);
-}
-.elecCar2Link {
-  background-image: url("assets/img/electric-car-2.jpg");
-  transform: translate(0%, -100%);
-}
-.plane1Link {
-  background-image: url("assets/img/plane-1.jpg");
-  transform: translate(0%, -100%);
-}
-.plane2Link {
-  background-image: url("assets/img/plane-2.jpg");
-  transform: translate(0%, -100%);
-}
-.documentLink {
-  background-image: url("assets/img/pdf-file.jpg");
+
+.flexbox {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
