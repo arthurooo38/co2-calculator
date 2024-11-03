@@ -4,6 +4,10 @@
   margin: 0px;
 }
 
+body {
+  min-height: 100%;
+}
+
 .hidden {
   display: none;
 }
@@ -18,7 +22,7 @@ navbar {
 }
 
 footer {
-  width: 100%;
+  width: calc(100%-30px);
   justify-content: center;
   display: flex;
   align-items: center;
@@ -69,6 +73,7 @@ h2 {
 }
 
 .input-wrapper {
+  position: relative;
   margin: 0px 0px 0px 20px;
   line-height: 100%;
   color: #5e5e5e;
@@ -172,6 +177,9 @@ ul {
 }
 
 .icon-button {
+  position: absolute;
+  right: 10px;
+  top: 7.5px;
   background-color: #3457D5;
   padding: 2px;
   display: flex;
