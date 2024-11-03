@@ -17,6 +17,18 @@ navbar {
   background-color: white;
 }
 
+footer {
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  padding: 15px 30px 15px 30px;
+  gap: 30px;
+  border-top: solid 2px #E2E7F9;
+  background-color: white;
+
+}
+
 h1 {
   text-transform: uppercase;
   font-size: 20px;
@@ -45,7 +57,7 @@ body {
 }
 
 .first {
-  flex: 1 1 400px;
+  flex: 1 1 420px;
 }
 
 h2 {
@@ -56,11 +68,19 @@ h2 {
   margin: 0px 20px 0px 20px;
 }
 
+.input-wrapper {
+  margin: 0px 0px 0px 20px;
+  line-height: 100%;
+  color: #5e5e5e;
+  display: inline-block; 
+}
+
 .text-wrapper {
   margin: 0px 20px 0px 20px;
   line-height: 100%;
   color: #5e5e5e;
 }
+
 label {
   margin: 8px;
 }
@@ -91,7 +111,6 @@ select {
   border: none;
   background-color: #E2E7F9;
   border-radius: 10px;
-  text-align: center;
 }
 select:focus {
   outline: solid 2px #3457D5;
@@ -115,7 +134,7 @@ a:hover {
 
 section {
   max-width: 1200px;
-  margin: 30px;
+  margin: 20px;
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
@@ -129,12 +148,7 @@ ul {
 }
 
 
-ion-icon {
-  font-size: 24px;
-  color: #3457D5;
-}
-
-#documentLink {
+.main-button {
   background-color: #3457D5;
   color: white;
   padding: 12px 20px;
@@ -142,16 +156,66 @@ ion-icon {
   border-radius: 10px;
   border: solid 2px #172A6E;
   box-shadow: 0px 2px #172A6E;
-  transition: 0.2s;  
+  transition: 0.2s;
+  cursor: pointer;
 }
 
-#documentLink:hover {
-   text-decoration: none;
-   box-shadow: 0px 4px #172A6E;     
+.main-button:hover {
+  color: white;
+  text-decoration: none;
+  box-shadow: 0px 4px #172A6E;     
+}
+
+.icon-button ion-icon {
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.icon-button {
+  background-color: #3457D5;
+  padding: 2px;
+  display: flex;
+  border-radius: 10px;
+  border: solid 2px #172A6E;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.icon-button:hover {
+  color: white;
+  box-shadow: 0px 2px #172A6E;     
 }
 
 .flexbox {
   display: flex;
   flex-direction: column;
   align-items: start;
+}
+dialog {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+dialog::backdrop {
+  background: rgba(0,0,0,.75);
+}
+
+.wrapper-input-button {
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.legend {
+  font-size: 12px;
+  text-decoration: underline;
 }

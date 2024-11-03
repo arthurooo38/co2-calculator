@@ -49,10 +49,12 @@ const yearSelect = document.getElementById("yearSelect");
 const passengersCarSelect = document.getElementById("passengersCarSelect");
 const roadSelect = document.getElementById("roadSelect");
 
+// function to round a number
 function round(x) {
-  return Number.parseFloat(x).toFixed(1);
+  return Number.parseFloat(x).toFixed(0);
 }
 
+// addEventListener for every changes
 distanceInput.addEventListener("input", estimate);
 multiPlaneSelect.addEventListener("change", estimate);
 trainTypeSelect.addEventListener("change", estimate);
@@ -64,9 +66,15 @@ roadSelect.addEventListener("change", estimate);
 modeSelect.addEventListener("change", estimate);
 modeSelect.addEventListener("change", openOutput);
 
+
+
+// function to estimate the emissions based on many parameters
 function estimate(e) {
-  if (modeSelect.value == "train") {
+
+
+
     // Estimate the train emissions
+  if (modeSelect.value == "train") {
   if (trainTypeSelect.value == "ter") {
     trainEmissions = TEREmissions / 1000;
   } else if (trainTypeSelect.value == "rer") {
@@ -78,8 +86,11 @@ function estimate(e) {
   }
   output.textContent = round(trainEmissions * distanceInput.value);
   }
-  if (modeSelect.value == "plane") {
+
+
+
     // Estimate the plane emissions
+  if (modeSelect.value == "plane") {
   if (distanceInput.value < 1000) {
     planeEmissions = shortPlaneEmissions / 1000;
   } else if (distanceInput.value > 3500) {
@@ -95,8 +106,11 @@ function estimate(e) {
     output.textContent = round(3 * planeEmissions * distanceInput.value);
   }
   }
-  if (modeSelect.value == "car") {
+
+
+
     // Estimate the car emissions
+  if (modeSelect.value == "car") {
   // var consumption
   if (typeCarSelect.value == "fuel" || typeCarSelect.value == "diesel") {
     if (sizeCarSelect.value == "small") {
@@ -147,6 +161,7 @@ function estimate(e) {
   } else if (passengersCarSelect.value == "5") {
     nbPassengers = 5;
   }
+
   // output
   if (typeCarSelect.value == "fuel") {
     output.textContent = round(
@@ -169,9 +184,13 @@ function estimate(e) {
     );
   }
   }
-    
 }
 
+
+
+
+
+// function change the second card based on the selected changes
 function openOutput(e) {
   if (modeSelect.value == "train") {
     openTrainTab();
@@ -210,4 +229,85 @@ function openCarTab() {
   elementToHide1.classList.add("hidden");
   elementToHide2.classList.add("hidden");
 }
+
+
+
+
+
+
+
+// Estimate distance between 2 cities
+const selectCity1 = document.getElementById("selectCity1");
+const selectCity2 = document.getElementById("selectCity2");
+
+// Selectize js
+$(function () {
+  $('#selectCity1').selectize();
+});
+$(function () {
+  $('#selectCity2').selectize();
+});
+
+
+citiesList.forEach(d=> selectCity1.add(new Option(d.city + ', ' + d.country, d.value)));
+citiesList.forEach(d=> selectCity2.add(new Option(d.city + ', ' + d.country, d.value)));
+
+
+function getCoordinates(cityName) {
+  // Find the city in the array
+  const city = citiesList.find(city => city.city.toLowerCase() === cityName.toLowerCase());
+
+  // Return the coordinates or a message if not found
+  if (city) {
+    return { lat: city.lat, long: city.long };
+  } else {
+    return `City "${cityName}" not found in the list.`;
+  }
+}
+//function to estimate the distance between 2 cities
+function haversine(lat1, lon1, lat2, lon2) {
+  const R = 6371; // Radius of Earth in kilometers
+  const dLat = (lat2 - lat1) * Math.PI / 180;
+  const dLon = (lon2 - lon1) * Math.PI / 180;
+  const a = 
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+    Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+  return round(R * c); // Distance in kilometers
+}
+//function to get the distance
+function calculateDistance() {
+  const selectCity1 = document.getElementById("selectCity1").value;
+  const selectCity2 = document.getElementById("selectCity2").value;
+  const forthAndBack = document.getElementById("forthAndBack").value;
+
+  const startCoords = getCoordinates(selectCity1);
+  const endCoords = getCoordinates(selectCity2);
+
+  var distance = haversine(startCoords.lat, startCoords.long, endCoords.lat, endCoords.long);
+  if(forthAndBack == "AR") {distance = distance *2;}
+  if(forthAndBack == "Aller") {distance = distance *1;}
+
+  document.getElementById('distanceInput').value = distance;
+}
+
+
+
+
+//Modal section
+const modalSection = document.getElementById("modalSection");
+
+function openModal() {
+  modalSection.showModal();
+}
+function closeModal() {
+  modalSection.close();
+  calculateDistance();
+  estimate();
+}
+
+
+
+
 

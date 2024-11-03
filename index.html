@@ -1,32 +1,93 @@
+<!DOCTYPE html>
+
 <head>
+  <html lang="fr"></html>
+  <title>L'impact de mon voyage</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.svg">
+
+
   <meta charset="UTF-8">
-  <meta name="description" content="L'impact de ton voyage">
-  <meta name="keywords" content="HTML, CSS, JavaScript">
-  <meta name="author" content="Arthur">
+  <meta name="description" content="Calculateur d’empreinte carbone pour vos trajets en avion, train, ou voiture. Découvrez comment réduire l'impact écologique de vos voyages en France, en Europe, et dans le monde.">
+  <meta name="keywords" content="calcul empreinte carbone transport, combien de CO2 trajet en avion, empreinte carbone avion voiture train, simulateur CO2 transport, évaluation impact carbone voyage">
+  <meta name="author" content="Arthur KOOSHMANIAN">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!--Import google fonts-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-  
+<!--Link to CSS-->
   <link rel="stylesheet" href="style.css">
+
+<!--Link to JQuery-->
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<!--Link to Selectize-->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
+    integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"
+    integrity="sha512-IOebNkvA/HZjMM7MxL0NYeLYEalloZ8ckak+NDtOViP7oiYzG5vn6WVXyrJDiJPhl4yRdmNAG49iuLmhkUdVsQ=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
+
 </head>
 
 <body>
+<!--Navbar-->
   <navbar>
-    <div class="logo"><ion-icon name="train"></ion-icon></div>
-    <h1>Emissions de CO2 de ton trajet</h1>
+    <div class="logo"><img src="assets/img/favicon.svg" alt="maps-icon" width="48" height="48"></div>
+    <h1>L'impact de mon voyage</h1>
   </navbar>
 
-  <section>
+
+
+<!--Modal section to choose start and end points-->
+  <dialog id="modalSection" class="card">
+    <h2>Calcul de la distance entre 2 villes</h2>
+    <br>
+    <div class="input-wrapper">
+      <label for="selectCity1">Ville de départ</label>
+      <select name="selectCity1" id="selectCity1"></select>
+      <br>
+      <label for="selectCity2">Ville d'arrivée</label>
+      <select name="selectCity2" id="selectCity2"></select>
+      <br>
+      <label for="forthAndBack">Voyage</label>
+      <select name="forthAndBack" id="forthAndBack">
+        <option value="Aller">Aller</option>
+        <option value="AR">Aller-retour</option>
+      </select>
+    </div>
+    
+    <div class="text-wrapper">
+      <button class="main-button" onclick="closeModal()">Okay !</button>
+    </div>
+  </dialog>
+
+
+
+    <section>
+<!--1st card-->
     <div class="card first">
       <h2>Ton trajet</h2>
       <br>
-      <div class="text-wrapper">
-        distance parcourue (en km) :
-        <input type="number" id="distanceInput">
-        <br>
-        mode de transport :
+      <div class="wrapper-input-button">
+        <div class="input-wrapper">
+          <label for="distanceInput">distance parcourue (en km) :</label>
+            <input type="number" id="distanceInput">
+        </div>
+          <button class="icon-button" onclick="openModal()"><ion-icon name="locate-outline"></ion-icon></button>
+      </div>
+      
+      <div class="input-wrapper">
+        <label for="modeSelect">mode de transport :</label>
         <select name="modeSelect" id="modeSelect">
           <option value="train">Train</option>
           <option value="plane">Avion</option>
@@ -35,13 +96,14 @@
       </div>
     </div>
 
-    <!--This is the train section-->
-
+<!--2nd card-->
+    <!--Train section-->
     <div class="output-section second card">
       <div id="trainTab">
         <h2>Paramètres train</h2>
         <br>
-        <div class="text-wrapper">
+        <!--Select type of trains-->
+        <div class="input-wrapper">
           <label for="trainTypeSelect">type de train :</label>
           <select name="trainTypeSelect" id="trainTypeSelect">
             <option value="ter">TER</option>
@@ -50,20 +112,22 @@
             <option value="ic">Train de nuit et Intercités</option>
           </select>
         </div>
-        <div class="text-wrapper">
-          <label for="countryTypeSelect">pays de circulation:</label>
+        <!--Select train brand-->
+        <div class="input-wrapper">
+          <label for="countryTypeSelect">compagnie :</label>
           <select name="countryTypeSelect" id="countryTypeSelect">
-            <option value="fr">France</option>
+            <option value="sncf">SNCF</option>
+            <option value="other">Autre</option>
           </select>
         </div>
       </div>
 
-      <!--This is the plane section-->
-
+      <!--Plane section-->
       <div id="planeTab" class="hidden">
         <h2>Paramètres avion</h2>
         <br>
-        <div class="text-wrapper">
+        <!--Select coefficient for planes-->
+        <div class="input-wrapper">
           <label for="multiPlaneSelect">les trainées de condensation</label>
           <select name="multiPlaneSelect" id="multiPlaneSelect">
             <option value="x0">je ne les prends pas en compte</option>
@@ -73,12 +137,12 @@
         </div>
       </div>
 
-      <!--This is the car section-->
-
+      <!--Car section-->
       <div id="carTab" class="hidden">
         <h2>Paramètres voiture</h2>
         <br>
-        <div class="text-wrapper">
+        <!--Select motor type fo cars-->
+        <div class="input-wrapper">
           <label for="typeCarSelect">type de moteur :</label>
           <select name="typeCarSelect" id="typeCarSelect">
             <option value="fuel">Essence</option>
@@ -86,7 +150,8 @@
             <option value="elec">Electrique</option>
           </select>
         </div>
-        <div class="text-wrapper">
+        <!--Select size car-->
+        <div class="input-wrapper">
           <label for="sizeCarSelect">taille du véhicule :</label>
           <select name="sizeCarSelect" id="sizeCarSelect">
             <option value="small">Citadine</option>
@@ -94,7 +159,8 @@
             <option value="big">SUV ou sportive</option>
           </select>
         </div>
-        <div class="text-wrapper">
+        <!--Select year of cars-->
+        <div class="input-wrapper">
           <label for="yearSelect">année de sortie :</label>
           <select name="yearSelect" id="yearSelect">
             <option value="2020">2020</option>
@@ -103,7 +169,8 @@
             <option value="1990">1990</option>
           </select>
         </div>
-        <div class="text-wrapper">
+        <!--Select number of passengers of cars-->
+        <div class="input-wrapper">
           <label for="passengersCarSelect">nombre de passagers :</label>
           <select name="passengersCarSelect" id="passengersCarSelect">
             <option value="1">1</option>
@@ -113,7 +180,8 @@
             <option value="5">5</option>
           </select>
         </div>
-        <div class="text-wrapper">
+        <!--Select type of road of cars-->
+        <div class="input-wrapper">
           <label for="roadSelect">où as-tu conduis ?</label>
           <select name="roadSelect" id="roadSelect">
             <option value="city">En ville</option>
@@ -124,6 +192,7 @@
       </div>
     </div>
 
+<!--3rd card-->
     <div class="card third ">
       <h2>Résultat</h2>
       <br>
@@ -132,35 +201,42 @@
       </div>
     </div>
 
+<!--4th card-->
     <div class="card fourth">
       <h2>Comprendre les calculs</h2>
       <br>
       <div class="text-wrapper flexbox">
+        <div class="img">
+          <img src="" width="" alt="">
+        <label class="legend"></label>
+        </div>
+        <br>
         <p>Un document PDF expliquant les hypothèses et sources des calculs est disponible. </p>
-        <a href="assets/doc/Methodo calculs co2 transports.pdf" id="documentLink" target="_blank">Télécharger</a>
+        <a href="assets/doc/Methodo calculs co2 transports.pdf" id="documentLink" target="_blank" class="main-button">Télécharger</a>
       </div>
     </div>
 
+<!--5th card-->
     <div class="card fifth">
-      <h2>Plus aller plus loin</h2>
+      <h2>Pour aller plus loin</h2>
       <br>
       <div class="text-wrapper">
-        <p>Quelques liens utiles pour voyager en train:</p>
+        <p>Voyager éco-responsable :</p>
         <ul>
           <li><a href="https://www.mollow.eu/" id="mollowLink" target="_blank">Mollow</a></li>
           <li><a href="https://www.hourrail.voyage/fr" id="hourrailLink" target="_blank">Hourrail</a></li>
         </ul>
 
-        <p>Est-ce que la voiture électrique est écolo ?</p>
+        <p>Quid de la voiture électrique ?</p>
         <ul>
-          <li><a href="https://bonpote.com/ocean-de-fake-news-sur-la-voiture-electrique/" id="elecCar1Link" target="_blank">Article BonPote</a></li>
-          <li><a href="https://www.carbone4.com/analyse-faq-voiture-electrique" id="elecCar2Link" target="_blank">Article Carbone4</a></li>
+          <li><a href="https://bonpote.com/ocean-de-fake-news-sur-la-voiture-electrique/" id="elecCar1Link" target="_blank">BonPote - Fake news sur la voiture électrique</a></li>
+          <li><a href="https://www.carbone4.com/analyse-faq-voiture-electrique" id="elecCar2Link" target="_blank">Carbone4 - FAQ voiture électrique</a></li>
         </ul>
 
-        <p>L'avion pollue, à quel point ?</p>
+        <p>Quel est l'impact de l'avion ?</p>
         <ul>
-          <li><a href="https://www.greenpeace.fr/voyage-ecologique/reduire-ses-voyages-en-avion-une-solution-pour-climat/" id="plane1Link" target="_blank">Article GreenPeace</a></li>
-          <li><a href="https://bonpote.com/10-chiffres-a-connaitre-sur-lavion-et-le-climat/" id="plane2Link" target="_blank">Article BonPote</a></li>
+          <li><a href="https://www.greenpeace.fr/voyage-ecologique/reduire-ses-voyages-en-avion-une-solution-pour-climat/" id="plane1Link" target="_blank">GreenPeace - Réduire ses voyages en avion</a></li>
+          <li><a href="https://bonpote.com/10-chiffres-a-connaitre-sur-lavion-et-le-climat/" id="plane2Link" target="_blank">BonPote - 10 chiffres à connaitre sur l'avion et le climat</a></li>
         </ul>
 
       </div>
@@ -168,9 +244,17 @@
 
   </section>
 
+<!--Footer-->
+  <footer>
+    <div class="logo"><img src="assets/img/favicon.svg" alt="maps-icon" width="48" height="48"></div>
+      <p>Copyright (c) 2024 Arthur Kooshmanian </p>
+      <a href="https://www.linkedin.com/in/arthur-kooshmanian-85b199207/"><ion-icon name="logo-linkedin"></ion-icon></a>
+  </footer>
 
+<!--Scripts Ionicons-->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+<!--Scripts JS-->
+  <script src="Cities.js"></script> 
   <script src="script.js"></script> 
 </body>
