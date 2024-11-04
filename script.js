@@ -34,6 +34,9 @@ var roadTypeCoeff = 1.15;
 const mixElecFR = 11; //  g/kwh
 var nbPassengers = 1;
 
+// Declare bus variables
+const busesEmissions = 0.027; //  gCO2e/km/passsager (average value)
+
 // Declare variables used to update numbers
 const distanceInput = document.getElementById("distanceInput");
 
@@ -184,6 +187,11 @@ function estimate(e) {
     );
   }
   }
+
+    // Estimate the buses emissions
+    if (modeSelect.value == "autocar") {
+        output.textContent = round(busesEmissions * distanceInput.value);
+      }
 }
 
 
@@ -195,11 +203,17 @@ function openOutput(e) {
   if (modeSelect.value == "train") {
     openTrainTab();
   }
-  if (modeSelect.value == "plane") {
+  else if (modeSelect.value == "plane") {
     openPlaneTab();
   }
-  if (modeSelect.value == "car") {
+  else if (modeSelect.value == "car") {
     openCarTab();
+  }
+  else if (modeSelect.value == "ferry") {
+    openFerryTab();
+  }
+  else if (modeSelect.value == "autocar") {
+    openAutocarTab();
   }
 }
 
@@ -207,32 +221,66 @@ function openTrainTab() {
   var elementToOpen = document.getElementById("trainTab");
   var elementToHide1 = document.getElementById("planeTab");
   var elementToHide2 = document.getElementById("carTab");
+  var elementToHide3 = document.getElementById("ferryTab");
+  var elementToHide4 = document.getElementById("autocarTab");
   elementToOpen.classList.remove("hidden");
   elementToHide1.classList.add("hidden");
   elementToHide2.classList.add("hidden");
+  elementToHide3.classList.add("hidden");
+  elementToHide4.classList.add("hidden");
 }
 
 function openPlaneTab() {
   var elementToOpen = document.getElementById("planeTab");
   var elementToHide1 = document.getElementById("trainTab");
   var elementToHide2 = document.getElementById("carTab");
+  var elementToHide3 = document.getElementById("ferryTab");
+  var elementToHide4 = document.getElementById("autocarTab");
   elementToOpen.classList.remove("hidden");
   elementToHide1.classList.add("hidden");
   elementToHide2.classList.add("hidden");
+  elementToHide3.classList.add("hidden");
+  elementToHide4.classList.add("hidden");
 }
 
 function openCarTab() {
   var elementToOpen = document.getElementById("carTab");
   var elementToHide1 = document.getElementById("planeTab");
   var elementToHide2 = document.getElementById("trainTab");
+  var elementToHide3 = document.getElementById("ferryTab");
+  var elementToHide4 = document.getElementById("autocarTab");
   elementToOpen.classList.remove("hidden");
   elementToHide1.classList.add("hidden");
   elementToHide2.classList.add("hidden");
+  elementToHide3.classList.add("hidden");
+  elementToHide4.classList.add("hidden");
 }
 
+function openFerryTab() {
+  var elementToOpen = document.getElementById("ferryTab");
+  var elementToHide1 = document.getElementById("planeTab");
+  var elementToHide2 = document.getElementById("trainTab");
+  var elementToHide3 = document.getElementById("carTab");
+  var elementToHide4 = document.getElementById("autocarTab");
+  elementToOpen.classList.remove("hidden");
+  elementToHide1.classList.add("hidden");
+  elementToHide2.classList.add("hidden");
+  elementToHide3.classList.add("hidden");
+  elementToHide4.classList.add("hidden");
+}
 
-
-
+function openAutocarTab() {
+  var elementToOpen = document.getElementById("autocarTab");
+  var elementToHide1 = document.getElementById("planeTab");
+  var elementToHide2 = document.getElementById("trainTab");
+  var elementToHide3 = document.getElementById("ferryTab");
+  var elementToHide4 = document.getElementById("carTab");
+  elementToOpen.classList.remove("hidden");
+  elementToHide1.classList.add("hidden");
+  elementToHide2.classList.add("hidden");
+  elementToHide3.classList.add("hidden");
+  elementToHide4.classList.add("hidden");
+}
 
 
 

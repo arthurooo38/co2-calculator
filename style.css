@@ -4,10 +4,6 @@
   margin: 0px;
 }
 
-body {
-  min-height: 100%;
-}
-
 .hidden {
   display: none;
 }
@@ -99,7 +95,7 @@ input {
   background-color: #E2E7F9;
   border-radius: 10px;
   transition: 0.2s;
-  max-width: 100px;
+  max-width: 70px;
 }
 
 input:focus {
@@ -139,7 +135,7 @@ a:hover {
 
 section {
   max-width: 1200px;
-  margin: 20px;
+  margin: 15px;
   display: flex;
   flex-wrap: wrap;
   gap: 18px;
