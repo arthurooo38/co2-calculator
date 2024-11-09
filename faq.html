@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+
+<head>
+  <html lang="fr"></html>
+  <title>L'impact de mon voyage</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.svg">
+
+
+  <meta charset="UTF-8">
+  <meta name="description" content="Calculateur d’empreinte carbone pour vos trajets en avion, train, ou voiture. Découvrez comment réduire l'impact écologique de vos voyages en France, en Europe, et dans le monde.">
+  <meta name="keywords" content="calcul empreinte carbone transport, combien de CO2 trajet en avion, empreinte carbone avion voiture train, simulateur CO2 transport, évaluation impact carbone voyage">
+  <meta name="author" content="Arthur KOOSHMANIAN">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!--Import google fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+<!--Link to CSS-->
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+<!--Navbar-->
+  <navbar>
+    <div class="logo"><img src="assets/img/favicon.svg" alt="maps-icon" width="48" height="48"></div>
+    <h1>L'impact de mon voyage</h1>
+  </navbar>
+
+    <section>
+        <div class="questions-wrapper card">
+            <h2>Questions fréquemment posées</h2>
+            <ul>
+                <li><button id="transport-pollute-q" onclick="openQuestion1()" class="frequent-question selected-question">Pourquoi les transports ça pollue ?</button></li>
+                <li><button id="slow-travel-q" onclick="openQuestion2()" class="frequent-question">Comment voyager autrement ?</button></li>
+                <li><button id="travel-by-train-q" onclick="openQuestion3()" class="frequent-question">Pourquoi choisir de voyager en train ?</button></li>
+                <li><button id="clouds-plane-q" onclick="openQuestion4()" class="frequent-question">Qu'est ce qu'une trainée de condensation ?</button></li>
+                <li><button id="elec-car-q" onclick="openQuestion5()" class="frequent-question">La voiture électrique, c'est mauvais pour la planète ?</button></li>
+                <li><button id="bike-city-q" onclick="openQuestion6()" class="frequent-question">Quelles sont les meilleurs villes où se balader à vélo en Europe ?</button></li>
+            </ul>
+        </div>
+
+        <div class="card">
+
+            <div id="transport-pollute" class="">
+                <h2>Pourquoi les transports ça pollue ?</h2>
+                <br>    
+                <div class="text-wrapper">
+                    <h4>Pourquoi les transports, ça pollue ?</h4>
+                    <p>Les transports, ce sont tous les moyens de se déplacer : voitures, camions, avions, trains, bateaux, etc. Et la pollution vient surtout de l'énergie dont ils ont besoin pour avancer. Voici comment ça marche :</p>
+                    <ul>
+                        <li>Les carburants polluants: La plupart des véhicules (comme les voitures, les camions, et les avions) utilisent de l'essence, du diesel ou du kérosène. Ces carburants viennent du pétrole, qui est une ressource qu’on trouve sous terre. Quand on les brûle pour faire marcher un moteur, cela produit des gaz d’échappement, et l'un des plus dangereux est le dioxyde de carbone (CO₂). Le CO₂ est un gaz à effet de serre. Il reste dans l'atmosphère, comme une couverture qui retient la chaleur autour de la Terre, ce qui réchauffe notre planète. Cela contribue au changement climatique.</li>
+                        <li>Les particules et autres gaz nocifs : En plus du CO₂, les moteurs rejettent aussi d’autres gaz et particules qui polluent l'air. Ces polluants sont mauvais pour notre santé et peuvent causer des maladies respiratoires ou des allergies.</li>
+                    </ul>
+                    <h4>Mais pourquoi tous les transports ne polluent pas de la même façon ?</h4>
+                    <ul>
+                        <li>Les avions sont parmi les plus gros pollueurs. Ils brûlent beaucoup de carburant pour voler, et en plus, ils le font très haut dans le ciel, ce qui a un impact plus grand sur le climat.</li>
+                        <li>Les voitures polluent beaucoup aussi, surtout si elles sont anciennes ou si elles roulent beaucoup.</li>
+                        <li>Les camions, qui transportent des marchandises, consomment énormément de diesel, ce qui fait beaucoup de pollution.</li>
+                        <li>Les trains, en revanche, polluent souvent moins, surtout s'ils sont électriques. Et s'ils utilisent de l'électricité propre (comme celle produite par le vent ou le soleil), c'est encore mieux !</li>
+                        <li>Les bateaux polluent aussi beaucoup, car ils utilisent des carburants très mauvais pour traverser les océans.</li>
+                    </ul>
+                    <h4>Peut on faire mieux ?</h4>
+                    <p>Oui ! On peut utiliser des transports plus écologiques :</p>
+                    <ul>
+                        <li>Prendre le train au lieu de l’avion ou de la voiture quand c’est possible, parce que le train consomme moins d’énergie par personne transportée.</li>
+                        <li>Choisir des véhicules électriques ou hybrides et de plus petite taille, qui polluent moins quand ils roulent.</li>
+                        <li>Faire plus de vélo ou marcher quand on n'a pas besoin de la voiture. C’est bon pour l'environnement et pour la santé !</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div id="slow-travel" class="hidden">
+                <h2>Comment voyager autrement ?</h2>
+                <br>    
+                <div class="text-wrapper">
+                    <p>Voyager autrement en Europe, c’est essayer de découvrir des lieux tout en respectant la planète et en s'amusant différemment. Voici quelques idées simples et chouettes :</p>
+                    <h4>Prendre le train pour des aventures écolo</h4>
+                    <p>Le train est une super option pour explorer l’Europe tout en réduisant la pollution. En plus, c’est relaxant, et tu peux admirer de beaux paysages pendant le voyage !</p>
+                    <ul>
+                        <li>Le trajet : Par exemple, tu peux aller de Paris à Londres en Eurostar, ou faire un magnifique voyage en train à travers les montagnes suisses.</li>
+                        <li>Idées de destinations : Les Alpes françaises ou suisses pour de la randonnée, l'Italie en passant par des villes comme Rome, Venise ou Florence, toutes accessibles en train ou encore le Portugal pour découvrir Lisbonne ou Porto.</li>
+                    </ul>
+                    <h4>Explorer en vélo</h4>
+                    <p>Pour les plus sportifs (ou ceux qui veulent pédaler doucement !), voyager en Europe à vélo est une belle aventure. Tu peux suivre des pistes cyclables sécurisées et profiter de la nature.</p>
+                    <p>Quelques destinations à vélo :</p>
+                    <ul>
+                        <li>La route du Danube : C’est un itinéraire populaire qui va de l’Allemagne à la Roumanie en longeant le fleuve Danube. Tu traverseras de beaux villages et des paysages verdoyants.</li>
+                        <li>La Hollande : Les Pays-Bas sont plats, donc c'est facile à vélo ! Tu peux explorer les champs de tulipes et les moulins à vent.</li>
+                        <li>La Bretagne, en France : Les côtes bretonnes sont magnifiques et pleines de sentiers à explorer.</li>
+                    </ul>
+                    <h4>Voyager en bateau ou en canoë</h4>
+                    <p>Pour une aventure différente, tu peux faire des excursions en bateau ou en canoë.</p>
+                    <ul>
+                        <li>En Norvège, tu peux découvrir les fjords en kayak, une expérience incroyable au milieu de montagnes et de cascades.</li>
+                        <li>En Croatie, tu peux faire du bateau d'île en île pour explorer des plages secrètes et de jolis villages.</li>
+                    </ul>
+                    <h4>Randonnées pour les amoureux de la nature</h4>
+                    <p>L’Europe est pleine de sentiers de randonnée spectaculaires, parfaits pour un voyage plus proche de la nature.</p>
+                    <ul>
+                        <li>Les Dolomites, en Italie : Des montagnes avec des vues à couper le souffle, parfaites pour marcher ou même camper.</li>
+                        <li>Le Camino de Santiago, en Espagne : Un chemin de pèlerinage où tu peux marcher sur plusieurs jours ou semaines, tout en rencontrant des gens du monde entier.</li>
+                        <li>Les Highlands d'Écosse : Pour une aventure sauvage et de superbes paysages.</li>
+                    </ul>
+                    <h4>Dormir de façon éco-responsable</h4>
+                    <p>Quand tu voyages, tu peux choisir de dormir dans des endroits qui respectent la nature :</p>
+                    <ul>
+                        <li>Les éco-lodges ou les cabanes en forêt, qui sont construits avec des matériaux naturels.</li>
+                        <li>Le camping, pour être encore plus proche de la nature, comme au bord d'un lac en Slovénie ou sur la côte en Bretagne.</li>
+                    </ul>
+                    <h4>Découvrir des villes autrement</h4>
+                    <p>Plutôt que de prendre la voiture, tu peux explorer les villes à pied, en vélo ou en utilisant les transports en commun.</p>
+                    <ul>
+                        <li>Amsterdam, avec ses canaux et ses pistes cyclables.</li>
+                        <li>Séville, où tu peux marcher ou louer un vélo pour découvrir l’architecture et la culture andalouse.</li>
+                        <li>Vienne, qui a des tramways et des bus électriques pour se déplacer proprement.</li>
+                    </ul>
+                    <h4>Faire du slow travel</h4>
+                    <p>Le slow travel, c’est prendre le temps d’apprécier chaque endroit au lieu de vouloir tout voir trop vite. Reste plus longtemps dans un endroit, découvre les marchés locaux, parle aux gens, et explore tranquillement.</p>
+                    <p>Voyager autrement, c’est se faire plaisir tout en prenant soin de notre planète. Ça peut être plus simple et plus authentique, et surtout, plein de souvenirs inoubliables !</p>
+
+                </div>
+            </div>
+
+            <div id="travel-by-train" class="hidden">
+                <h2>Pourquoi choisir de voyager en train ?</h2>
+                <br>    
+                <div class="text-wrapper">
+                    <h4>C'est mieux pour la planète</h4>
+                    <p>Quand un train se déplace, il peut transporter beaucoup de personnes en même temps, tout en polluant beaucoup moins que les avions ou les voitures. Moins de pollution, c’est mieux pour notre planète, ça aide à protéger les animaux, les forêts et les océans !</p>
+                    <h4>Tu peux te reposer et t'amuser</h4>
+                    <p>Dans un train, tu n’as pas besoin de te concentrer sur la route comme en voiture. Tu peux regarder le paysage qui défile par la fenêtre, lire un livre, jouer à un jeu, ou même faire une sieste. C’est comme un petit moment de détente pendant ton voyage.</p>
+                    <h4>C'est moins stressant</h4>
+                    <p>Il n’y a pas de bouchons (comme sur les routes), et tu ne dois pas t'inquiéter de conduire. Le train est rapide, et tu n'as qu'à monter dedans pour arriver à ta destination sans soucis.</p>
+                    <h4>C'est pratique</h4>
+                    <p>Les gares de train sont souvent en plein centre des villes, donc quand tu arrives, tu es tout de suite là où il y a plein de choses à voir. Pas besoin de chercher un taxi ou de rouler très loin.</p>
+                    <h4>C'est une aventure !</h4>
+                    <p>Prendre le train, c'est aussi un peu magique. Tu peux voir des paysages qui changent, des montagnes, des rivières, ou des champs qui défilent devant tes yeux. Ça rend le voyage très excitant.</p>
+                    <p>Voilà pourquoi le train, c’est une chouette façon de voyager !</p>
+
+                </div>
+            </div>
+
+            <div id="clouds-plane" class="hidden">
+                <h2>Qu'est ce qu'une trainée de condensation ?</h2>
+                <br>    
+                <div class="text-wrapper">
+                    <p>Tu sais, quand un avion passe très haut dans le ciel, il laisse parfois derrière lui de longues lignes blanches, un peu comme de la "fumée". On appelle ça des traînées de condensation.</p>
+                    <p>Elles se forment parce que, très haut dans le ciel, l’air est vraiment très froid. Quand un avion vole, il rejette des gaz chauds, qui contiennent de la vapeur d'eau (comme quand tu souffles de l'air chaud en hiver et que tu vois de la "fumée" sortir de ta bouche). Cette vapeur d'eau se transforme alors en minuscules gouttes d'eau ou en cristaux de glace, qui forment ces lignes blanches.</p>
+                    <h4>Est-ce que ces traînées de condensation disparaissent vite ?</h4>
+                    <p>Ça dépend. Parfois, elles disparaissent rapidement, mais d’autres fois, elles restent longtemps et s’étalent pour former des nuages fins. C’est là que ça commence à avoir un effet sur le climat.</p>
+                    <h4>Quel est leur impact sur le climat ?</h4>
+                    <p>Les traînées de condensation peuvent avoir deux effets :</p>
+                    <ul>
+                        <li>Elles bloquent la chaleur du soleil. Quand elles restent longtemps dans le ciel, elles agissent un peu comme un parasol en bloquant les rayons du soleil, ce qui peut refroidir un peu la Terre.</li>
+                        <li>Elles gardent la chaleur de la Terre. La nuit, elles empêchent la chaleur de s’échapper de la Terre, comme une couverture, ce qui peut réchauffer l'atmosphère.</li>
+                    </ul>
+                    <p>En général, les scientifiques s’accordent à dire que les traînées de condensation réchauffent plus qu'elles ne refroidissent la Terre. Donc, même si elles sont jolies à voir, elles contribuent au changement climatique.</p>
+
+                </div>
+            </div>
+
+            <div id="elec-car" class="hidden">
+                <h2>La voiture électrique, c'est mauvais pour la planète ?</h2>
+                <br>    
+                <div class="text-wrapper">
+                    <h4>Pourquoi une voiture électrique n'est pas parfaite pour le climat</h4>
+                    <p>Les voitures électriques ne polluent pas directement quand elles roulent, mais elles ne sont pas totalement "propres" non plus. Voici pourquoi :</p>
+                    <ul>
+                        <li>La fabrication des batteries : Pour fabriquer une voiture électrique, on a besoin de grosses batteries, qui utilisent des matériaux rares comme le lithium, le cobalt, ou le nickel. L'extraction de ces matériaux consomme beaucoup d’énergie et pollue l’environnement. Cela laisse une "empreinte écologique" assez importante.</li>
+                        <li>L'électricité n'est pas toujours verte : Pour recharger les voitures électriques, il faut de l'électricité. Et dans certains endroits, cette électricité est produite en utilisant du charbon ou d’autres énergies polluantes. Donc, ça peut indirectement causer de la pollution.</li>
+                        <li>Le recyclage des batteries : Quand les batteries arrivent en fin de vie, il est encore compliqué de les recycler complètement. Cela peut poser des problèmes de déchets.</li>
+                    </ul>
+                    <h4>Mais pourquoi c'est quand même mieux qu'une voiture thermique</h4>
+                    <p>Même si les voitures électriques ne sont pas parfaites, elles sont meilleures pour l'environnement que les voitures à essence ou diesel. Voici pourquoi :</p>
+                    <ul>
+                        <li>Moins de pollution quand elles roulent : Une voiture thermique (qui utilise de l'essence ou du diesel) rejette des gaz d'échappement qui contiennent du dioxyde de carbone (CO₂) et d'autres substances polluantes, mauvaises pour le climat et notre santé. Une voiture électrique, elle, n’émet rien de tout ça quand elle roule.</li>
+                        <li>Efficacité énergétique : Les voitures électriques utilisent l'énergie de manière beaucoup plus efficace. Elles consomment moins d’énergie pour se déplacer par rapport aux voitures thermiques, ce qui réduit la pollution globale si l'électricité est produite de manière propre (comme avec le vent, l’eau ou le soleil).</li>
+                        <li>Un futur plus propre : De plus en plus de pays produisent leur électricité de manière écologique (avec des éoliennes, des panneaux solaires, etc.). Donc, au fur et à mesure que l'énergie devient plus verte, les voitures électriques deviendront encore meilleures pour l’environnement.</li>
+                    </ul>
+                    <h4>Conclusion</h4>
+                    <p>La voiture électrique n'est pas complètement "propre", mais si on prend en compte toute la durée de vie d’une voiture, elle aide bien à réduire les gaz à effet de serre. C’est une étape importante pour protéger notre planète, mais le mieux restera toujours de se déplacer autrement !</p>
+
+                </div>
+            </div>
+
+            <div id="bike-city" class="hidden">
+                <h2>Quelles sont les meilleures villes où se balader à vélo ?</h2>
+                <br>    
+                <div class="text-wrapper">
+                    <h4>Amsterdam, Pays-Bas</h4>
+                    <p>C'est sûrement la ville la plus connue pour le vélo ! À Amsterdam, il y a plus de vélos que d'habitants, et des pistes cyclables partout. Tu peux pédaler le long des canaux, traverser des parcs, et découvrir plein de petits endroits mignons.</p>
+                    <h4>Copenhague, Danemark</h4>
+                    <p>Copenhague est une autre ville où tout le monde aime faire du vélo. Il y a des pistes cyclables larges et sûres, et même des "autoroutes" pour les vélos. Tu peux explorer le port, visiter le palais de la reine, ou faire un tour jusqu’à la célèbre statue de la Petite Sirène.</p>
+                    <h4>Strasbourg, France</h4>
+                    <p>Strasbourg est la meilleure ville de France pour faire du vélo. Il y a de nombreuses pistes cyclables qui te permettent de visiter la belle vieille ville, de longer les canaux, ou même de partir dans la campagne autour. C'est une expérience très agréable et tranquille !</p>
+                    <h4>Berlin, Allemagne</h4>
+                    <p>Berlin est une ville immense, mais parfaite pour le vélo. Les rues sont larges, et il y a beaucoup d'endroits où tu peux t’arrêter pour un café ou voir des monuments comme la porte de Brandebourg. En plus, tu peux explorer les nombreux parcs et lacs autour de la ville.</p>
+                    <h4>Valence, Espagne</h4>
+                    <p>À Valence, le climat est agréable presque toute l'année, ce qui rend le vélo très amusant. La ville a un ancien lit de rivière transformé en grand parc, idéal pour pédaler en toute sécurité. Et tu peux aller jusqu'à la plage en vélo !</p>
+                    <h4>Ljubljana, Slovénie</h4>
+                    <p>Ljubljana est une ville verte et très calme où le vélo est roi. Le centre-ville est en grande partie réservé aux piétons et aux cyclistes. Tu peux aussi explorer les parcs, longer la rivière, et même faire des randonnées à vélo dans les collines autour.</p>
+                    <h4>Utrecht, Pays-Bas</h4>
+                    <p>Comme Amsterdam, Utrecht est une ville néerlandaise où le vélo est super populaire. Les canaux, les petites ruelles, et l'ambiance jeune font que c'est un vrai plaisir de se balader à vélo ici.</p>
+                    <h4>Séville, Espagne</h4>
+                    <p>Séville est ensoleillée et a fait beaucoup d'efforts pour devenir une ville amie des vélos. Il y a des pistes cyclables qui te mènent aux monuments célèbres comme la cathédrale, le palais de l’Alcazar, ou encore le long du fleuve Guadalquivir.</p>
+
+                </div>
+            </div>
+
+        </div> 
+
+    </section>
+
+<!--Footer-->
+  <footer>
+    <div class="logo"><img src="assets/img/favicon.svg" alt="maps-icon" width="48" height="48"></div>
+      <p>Copyright © 2024 Arthur Kooshmanian </p>
+      <a href="https://www.linkedin.com/in/arthur-kooshmanian-85b199207/"><ion-icon name="logo-linkedin"></ion-icon></a>
+      <a href="https://github.com/arthurooo38/co2-calculator"><ion-icon name="logo-github"></ion-icon></a>
+  </footer>
+
+<!--Scripts Ionicons-->
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  <!--Scripts JS-->
+    <script src="script.js"></script> 
+</body>

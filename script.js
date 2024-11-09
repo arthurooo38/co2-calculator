@@ -1,15 +1,15 @@
 // Declare plane variables
-const shortPlaneEmissions = 126;
-const mediumPlaneEmissions = 97.7;
-const longPlaneEmissions = 83.06;
-var planeEmissions = 0.259;
+const shortPlaneEmissionsWOClouds = 0.141;
+const mediumPlaneEmissionsWOClouds = 0.103;
+const longPlaneEmissionsWOClouds = 0.0832;
+const shortPlaneEmissionsWithClouds = 0.258;
+const mediumPlaneEmissionsWithClouds = 0.187;
+const longPlaneEmissionsWithClouds = 0.152;
 
 // Declare train variables
-const TGVEmissions = 2;
-const ICEmissions = 4.9;
-const REREmissions = 4.9;
-const TEREmissions = 19.4;
-var trainEmissions = 0.002;
+const TGVEmissions = 0.002;
+const ICEmissions = 0.0049;
+const TEREmissions = 0.0194;
 
 // Declare car variables
 const smallFuel = 104; //  gCO2e/km
@@ -19,12 +19,6 @@ const smallElec = 0.14; //  kwh/km
 const mediumElec = 0.2; //  kwh/km
 const bigElec = 0.22; //  kwh/km
 var consumption = 104;
-
-const coeff1990 = 1.28;
-const coeff2000 = 1.19;
-const coeff2010 = 1.14;
-const coeff2020 = 1;
-var coeffYear = 1;
 
 const roadCity = 1.15;
 const roads = 1;
@@ -48,7 +42,6 @@ const multiPlaneSelect = document.getElementById("multiPlaneSelect");
 
 const typeCarSelect = document.getElementById("typeCarSelect");
 const sizeCarSelect = document.getElementById("sizeCarSelect");
-const yearSelect = document.getElementById("yearSelect");
 const passengersCarSelect = document.getElementById("passengersCarSelect");
 const roadSelect = document.getElementById("roadSelect");
 
@@ -63,7 +56,6 @@ multiPlaneSelect.addEventListener("change", estimate);
 trainTypeSelect.addEventListener("change", estimate);
 typeCarSelect.addEventListener("change", estimate);
 sizeCarSelect.addEventListener("change", estimate);
-yearSelect.addEventListener("change", estimate);
 passengersCarSelect.addEventListener("change", estimate);
 roadSelect.addEventListener("change", estimate);
 modeSelect.addEventListener("change", estimate);
@@ -79,34 +71,41 @@ function estimate(e) {
     // Estimate the train emissions
   if (modeSelect.value == "train") {
   if (trainTypeSelect.value == "ter") {
-    trainEmissions = TEREmissions / 1000;
-  } else if (trainTypeSelect.value == "rer") {
-    trainEmissions = REREmissions / 1000;
+    output.textContent = round(TEREmissions * distanceInput.value);
   } else if (trainTypeSelect.value == "tgv") {
-    trainEmissions = TGVEmissions / 1000;
+    output.textContent = round(TGVEmissions * distanceInput.value);
   } else if (trainTypeSelect.value == "ic") {
-    trainEmissions = ICEmissions / 1000;
+    output.textContent = round(ICEmissions * distanceInput.value);
   }
-  output.textContent = round(trainEmissions * distanceInput.value);
   }
 
 
 
     // Estimate the plane emissions
   if (modeSelect.value == "plane") {
-  if (distanceInput.value < 1000) {
-    planeEmissions = shortPlaneEmissions / 1000;
+  if (distanceInput.value <= 1000) {
+
+    if (multiPlaneSelect.value == "x0") {
+      output.textContent = round( shortPlaneEmissionsWOClouds * distanceInput.value);
+    } else if (multiPlaneSelect.value == "x2") {
+      output.textContent = round( shortPlaneEmissionsWithClouds* distanceInput.value);
+    }
   } else if (distanceInput.value > 3500) {
-    planeEmissions = longPlaneEmissions / 1000;
+
+    if (multiPlaneSelect.value == "x0") {
+      output.textContent = round( longPlaneEmissionsWOClouds* distanceInput.value);
+    } else if (multiPlaneSelect.value == "x2") {
+      output.textContent = round( longPlaneEmissionsWithClouds* distanceInput.value);
+    }
+
   } else {
-    planeEmissions = mediumPlaneEmissions / 1000;
-  }
-  if (multiPlaneSelect.value == "x0") {
-    output.textContent = round(planeEmissions * distanceInput.value);
-  } else if (multiPlaneSelect.value == "x2") {
-    output.textContent = round(2 * planeEmissions * distanceInput.value);
-  } else if (multiPlaneSelect.value == "x3") {
-    output.textContent = round(3 * planeEmissions * distanceInput.value);
+
+    if (multiPlaneSelect.value == "x0") {
+      output.textContent = round( mediumPlaneEmissionsWOClouds* distanceInput.value);
+    } else if (multiPlaneSelect.value == "x2") {
+      output.textContent = round( mediumPlaneEmissionsWithClouds* distanceInput.value);
+    }
+
   }
   }
 
@@ -133,16 +132,6 @@ function estimate(e) {
     }
   }
 
-  // var coeffYear
-  if (yearSelect.value == "1990") {
-    coeffYear = coeff1990;
-  } else if (yearSelect.value == "2000") {
-    coeffYear = coeff2000;
-  } else if (yearSelect.value == "2010") {
-    coeffYear = coeff2010;
-  } else if (yearSelect.value == "2020") {
-    coeffYear = coeff2020;
-  }
   // var roadTypeCoeff
   if (roadSelect.value == "city") {
     roadTypeCoeff = roadCity;
@@ -168,19 +157,19 @@ function estimate(e) {
   // output
   if (typeCarSelect.value == "fuel") {
     output.textContent = round(
-      (((1.2 * consumption * coeffYear * roadTypeCoeff) / nbPassengers) *
+      (((1.2 * consumption * roadTypeCoeff) / nbPassengers) *
         distanceInput.value) /
         1000
     );
   } else if (typeCarSelect.value == "diesel") {
     output.textContent = round(
-      (((0.8 * 1.2 * consumption * coeffYear * roadTypeCoeff) / nbPassengers) *
+      (((0.8 * 1.2 * consumption * roadTypeCoeff) / nbPassengers) *
         distanceInput.value) /
         1000
     );
   } else {
     output.textContent = round(
-      (((mixElecFR * 1.2 * consumption * coeffYear * roadTypeCoeff) /
+      (((mixElecFR * 1.2 * consumption * roadTypeCoeff) /
         nbPassengers) *
         distanceInput.value) /
         1000
@@ -358,4 +347,197 @@ function closeModal() {
 
 
 
+// Frequently Asked Questions
 
+//manage to open the answer on click
+function openQuestion1() {
+  var elementToShow = document.getElementById("transport-pollute");
+  var elementToHide1 = document.getElementById("slow-travel");
+  var elementToHide2 = document.getElementById("travel-by-train");
+  var elementToHide3 = document.getElementById("clouds-plane");
+  var elementToHide4 = document.getElementById("elec-car");
+  var elementToHide5 = document.getElementById("bike-city");
+
+  
+  elementToShow.classList.remove("hidden");
+  elementToHide1.classList.add("hidden");
+  elementToHide2.classList.add("hidden");
+  elementToHide3.classList.add("hidden");
+  elementToHide4.classList.add("hidden");
+  elementToHide5.classList.add("hidden");
+
+  var elementSelected = document.getElementById("transport-pollute-q");
+  var elementNotSelected1 = document.getElementById("slow-travel-q");
+  var elementNotSelected2 = document.getElementById("travel-by-train-q");
+  var elementNotSelected3 = document.getElementById("clouds-plane-q");
+  var elementNotSelected4 = document.getElementById("elec-car-q");
+  var elementNotSelected5 = document.getElementById("bike-city-q");
+
+  
+  elementSelected.classList.add("selected-question");
+  elementNotSelected1.classList.remove("selected-question");
+  elementNotSelected2.classList.remove("selected-question");
+  elementNotSelected3.classList.remove("selected-question");
+  elementNotSelected4.classList.remove("selected-question");
+  elementNotSelected5.classList.remove("selected-question");
+}
+
+function openQuestion2() {
+  var elementToHide1 = document.getElementById("transport-pollute");
+  var elementToShow = document.getElementById("slow-travel");
+  var elementToHide2 = document.getElementById("travel-by-train");
+  var elementToHide3 = document.getElementById("clouds-plane");
+  var elementToHide4 = document.getElementById("elec-car");
+  var elementToHide5 = document.getElementById("bike-city");
+
+  
+  elementToShow.classList.remove("hidden");
+  elementToHide1.classList.add("hidden");
+  elementToHide2.classList.add("hidden");
+  elementToHide3.classList.add("hidden");
+  elementToHide4.classList.add("hidden");
+  elementToHide5.classList.add("hidden");
+
+  var elementNotSelected1 = document.getElementById("transport-pollute-q");
+  var elementSelected = document.getElementById("slow-travel-q");
+  var elementNotSelected2 = document.getElementById("travel-by-train-q");
+  var elementNotSelected3 = document.getElementById("clouds-plane-q");
+  var elementNotSelected4 = document.getElementById("elec-car-q");
+  var elementNotSelected5 = document.getElementById("bike-city-q");
+
+  
+  elementSelected.classList.add("selected-question");
+  elementNotSelected1.classList.remove("selected-question");
+  elementNotSelected2.classList.remove("selected-question");
+  elementNotSelected3.classList.remove("selected-question");
+  elementNotSelected4.classList.remove("selected-question");
+  elementNotSelected5.classList.remove("selected-question");
+}
+
+function openQuestion3() {
+  var elementToHide1 = document.getElementById("transport-pollute");
+  var elementToHide2 = document.getElementById("slow-travel");
+  var elementToShow = document.getElementById("travel-by-train");
+  var elementToHide3 = document.getElementById("clouds-plane");
+  var elementToHide4 = document.getElementById("elec-car");
+  var elementToHide5 = document.getElementById("bike-city");
+
+  
+  elementToShow.classList.remove("hidden");
+  elementToHide1.classList.add("hidden");
+  elementToHide2.classList.add("hidden");
+  elementToHide3.classList.add("hidden");
+  elementToHide4.classList.add("hidden");
+  elementToHide5.classList.add("hidden");
+
+  var elementNotSelected1 = document.getElementById("transport-pollute-q");
+  var elementNotSelected2 = document.getElementById("slow-travel-q");
+  var elementSelected = document.getElementById("travel-by-train-q");
+  var elementNotSelected3 = document.getElementById("clouds-plane-q");
+  var elementNotSelected4 = document.getElementById("elec-car-q");
+  var elementNotSelected5 = document.getElementById("bike-city-q");
+
+  
+  elementSelected.classList.add("selected-question");
+  elementNotSelected1.classList.remove("selected-question");
+  elementNotSelected2.classList.remove("selected-question");
+  elementNotSelected3.classList.remove("selected-question");
+  elementNotSelected4.classList.remove("selected-question");
+  elementNotSelected5.classList.remove("selected-question");
+}
+
+function openQuestion4() {
+  var elementToHide1 = document.getElementById("transport-pollute");
+  var elementToHide2 = document.getElementById("slow-travel");
+  var elementToHide3 = document.getElementById("travel-by-train");
+  var elementToShow = document.getElementById("clouds-plane");
+  var elementToHide4 = document.getElementById("elec-car");
+  var elementToHide5 = document.getElementById("bike-city");
+
+  
+  elementToShow.classList.remove("hidden");
+  elementToHide1.classList.add("hidden");
+  elementToHide2.classList.add("hidden");
+  elementToHide3.classList.add("hidden");
+  elementToHide4.classList.add("hidden");
+  elementToHide5.classList.add("hidden");
+
+  var elementNotSelected1 = document.getElementById("transport-pollute-q");
+  var elementNotSelected2 = document.getElementById("slow-travel-q");
+  var elementNotSelected3 = document.getElementById("travel-by-train-q");
+  var elementSelected = document.getElementById("clouds-plane-q");
+  var elementNotSelected4 = document.getElementById("elec-car-q");
+  var elementNotSelected5 = document.getElementById("bike-city-q");
+
+  
+  elementSelected.classList.add("selected-question");
+  elementNotSelected1.classList.remove("selected-question");
+  elementNotSelected2.classList.remove("selected-question");
+  elementNotSelected3.classList.remove("selected-question");
+  elementNotSelected4.classList.remove("selected-question");
+  elementNotSelected5.classList.remove("selected-question");
+}
+
+function openQuestion5() {
+  var elementToHide1 = document.getElementById("transport-pollute");
+  var elementToHide2 = document.getElementById("slow-travel");
+  var elementToHide3 = document.getElementById("travel-by-train");
+  var elementToHide4 = document.getElementById("clouds-plane");
+  var elementToShow = document.getElementById("elec-car");
+  var elementToHide5 = document.getElementById("bike-city");
+
+  
+  elementToShow.classList.remove("hidden");
+  elementToHide1.classList.add("hidden");
+  elementToHide2.classList.add("hidden");
+  elementToHide3.classList.add("hidden");
+  elementToHide4.classList.add("hidden");
+  elementToHide5.classList.add("hidden");
+
+  var elementNotSelected1 = document.getElementById("transport-pollute-q");
+  var elementNotSelected2 = document.getElementById("slow-travel-q");
+  var elementNotSelected3 = document.getElementById("travel-by-train-q");
+  var elementNotSelected4 = document.getElementById("clouds-plane-q");
+  var elementSelected = document.getElementById("elec-car-q");
+  var elementNotSelected5 = document.getElementById("bike-city-q");
+
+  
+  elementSelected.classList.add("selected-question");
+  elementNotSelected1.classList.remove("selected-question");
+  elementNotSelected2.classList.remove("selected-question");
+  elementNotSelected3.classList.remove("selected-question");
+  elementNotSelected4.classList.remove("selected-question");
+  elementNotSelected5.classList.remove("selected-question");
+}
+
+function openQuestion6() {
+  var elementToHide1 = document.getElementById("transport-pollute");
+  var elementToHide2 = document.getElementById("slow-travel");
+  var elementToHide3 = document.getElementById("travel-by-train");
+  var elementToHide4 = document.getElementById("clouds-plane");
+  var elementToHide5 = document.getElementById("elec-car");
+  var elementToShow = document.getElementById("bike-city");
+
+  
+  elementToShow.classList.remove("hidden");
+  elementToHide1.classList.add("hidden");
+  elementToHide2.classList.add("hidden");
+  elementToHide3.classList.add("hidden");
+  elementToHide4.classList.add("hidden");
+  elementToHide5.classList.add("hidden");
+
+  var elementNotSelected1 = document.getElementById("transport-pollute-q");
+  var elementNotSelected2 = document.getElementById("slow-travel-q");
+  var elementNotSelected3 = document.getElementById("travel-by-train-q");
+  var elementNotSelected4 = document.getElementById("clouds-plane-q");
+  var elementNotSelected5 = document.getElementById("elec-car-q");
+  var elementSelected = document.getElementById("bike-city-q");
+
+  
+  elementSelected.classList.add("selected-question");
+  elementNotSelected1.classList.remove("selected-question");
+  elementNotSelected2.classList.remove("selected-question");
+  elementNotSelected3.classList.remove("selected-question");
+  elementNotSelected4.classList.remove("selected-question");
+  elementNotSelected5.classList.remove("selected-question");
+}

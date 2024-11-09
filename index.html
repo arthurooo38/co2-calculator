@@ -22,12 +22,12 @@
 <!--Link to JQuery-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <!--Link to Selectize-->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.default.min.css"
-    integrity="sha512-pTaEn+6gF1IeWv3W1+7X7eM60TFu/agjgoHmYhAfLEU8Phuf6JKiiE8YmsNC0aCgQv4192s4Vai8YZ6VNM6vyQ=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
+  <link 
+    rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/css/selectize.bootstrap4.min.css" 
+    integrity="sha512-ht3CSPjgWsxdbLti7wtKNEk5hLoGtP2J8C40muB5/PCWwNw9M/NMJpyvHdeko7ADC60SEOiCenU5pg+kJiG9lg==" 
+    crossorigin="anonymous" 
+    referrerpolicy="no-referrer" 
   />
   <script
     src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.15.2/js/selectize.min.js"
@@ -80,14 +80,14 @@
       <br>
       <div class="wrapper-input-button">
         <div class="input-wrapper">
-          <label for="distanceInput">distance parcourue (en km) :</label>
+          <label for="distanceInput">Distance parcourue (en km) :</label>
             <input type="number" id="distanceInput">
           <button class="icon-button" onclick="openModal()"><ion-icon name="locate-outline"></ion-icon></button>
         </div>
       </div>
       
       <div class="input-wrapper">
-        <label for="modeSelect">mode de transport :</label>
+        <label for="modeSelect">Mode de transport :</label>
         <select name="modeSelect" id="modeSelect">
           <option value="train">&#128646 Train</option>
           <option value="plane">&#128748 Avion</option>
@@ -106,20 +106,11 @@
         <br>
         <!--Select type of trains-->
         <div class="input-wrapper">
-          <label for="trainTypeSelect">type de train :</label>
+          <label for="trainTypeSelect">Type de train :</label>
           <select name="trainTypeSelect" id="trainTypeSelect">
             <option value="ter">TER</option>
-            <option value="rer">RER</option>
             <option value="tgv">TGV</option>
-            <option value="ic">Train de nuit et Intercités</option>
-          </select>
-        </div>
-        <!--Select train brand-->
-        <div class="input-wrapper">
-          <label for="countryTypeSelect">compagnie :</label>
-          <select name="countryTypeSelect" id="countryTypeSelect">
-            <option value="sncf">SNCF</option>
-            <option value="other">Autre</option>
+            <option value="ic">Train de nuit</option>
           </select>
         </div>
       </div>
@@ -130,11 +121,10 @@
         <br>
         <!--Select coefficient for planes-->
         <div class="input-wrapper">
-          <label for="multiPlaneSelect">les trainées de condensation</label>
+          <label for="multiPlaneSelect">Trainées de condensation</label>
           <select name="multiPlaneSelect" id="multiPlaneSelect">
-            <option value="x0">je ne les prends pas en compte</option>
-            <option value="x2">je multiplie par 2</option>
-            <option selected value="x3">je multiplie par 3</option>
+            <option value="x0">Sans</option>
+            <option selected value="x2">Avec</option>
           </select>
         </div>
       </div>
@@ -145,7 +135,7 @@
         <br>
         <!--Select motor type fo cars-->
         <div class="input-wrapper">
-          <label for="typeCarSelect">type de moteur :</label>
+          <label for="typeCarSelect">La motorisation :</label>
           <select name="typeCarSelect" id="typeCarSelect">
             <option value="fuel">Essence</option>
             <option value="diesel">Diesel</option>
@@ -154,26 +144,16 @@
         </div>
         <!--Select size car-->
         <div class="input-wrapper">
-          <label for="sizeCarSelect">taille du véhicule :</label>
+          <label for="sizeCarSelect">La taille du véhicule :</label>
           <select name="sizeCarSelect" id="sizeCarSelect">
             <option value="small">Citadine</option>
             <option value="medium">Moyenne</option>
             <option value="big">SUV ou sportive</option>
           </select>
         </div>
-        <!--Select year of cars-->
-        <div class="input-wrapper">
-          <label for="yearSelect">année de sortie :</label>
-          <select name="yearSelect" id="yearSelect">
-            <option value="2020">2020</option>
-            <option value="2010">2010</option>
-            <option value="2000">2000</option>
-            <option value="1990">1990</option>
-          </select>
-        </div>
         <!--Select number of passengers of cars-->
         <div class="input-wrapper">
-          <label for="passengersCarSelect">nombre de passagers :</label>
+          <label for="passengersCarSelect">Nombre de passagers :</label>
           <select name="passengersCarSelect" id="passengersCarSelect">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -184,7 +164,7 @@
         </div>
         <!--Select type of road of cars-->
         <div class="input-wrapper">
-          <label for="roadSelect">où as-tu conduis ?</label>
+          <label for="roadSelect">Nature de la route empruntée :</label>
           <select name="roadSelect" id="roadSelect">
             <option value="city">En ville</option>
             <option value="both">Mixte</option>
@@ -228,7 +208,7 @@
 
 <!--4th card-->
     <div class="card fourth">
-      <h2>&#128221 Comprendre les calculs</h2>
+      <h2>&#128221 Mieux comprendre les calculs</h2>
       <br>
       <div class="text-wrapper flexbox">
         <div class="img">
@@ -243,26 +223,17 @@
 
 <!--5th card-->
     <div class="card fifth">
-      <h2>&#128204 Pour aller plus loin</h2>
+      <h2>&#128204 Pour en savoir plus</h2>
       <br>
       <div class="text-wrapper">
-        <p>Voyager éco-responsable :</p>
+        <p>Quelques liens :</p>
         <ul>
           <li><a href="https://www.mollow.eu/" id="mollowLink" target="_blank">Mollow</a></li>
           <li><a href="https://www.hourrail.voyage/fr" id="hourrailLink" target="_blank">Hourrail</a></li>
+          <li><a href="https://bonpote.com/" id="bonPoteLink" target="_blank">Bon Pote</a></li>
         </ul>
-
-        <p>Quid de la voiture électrique ?</p>
-        <ul>
-          <li><a href="https://bonpote.com/ocean-de-fake-news-sur-la-voiture-electrique/" id="elecCar1Link" target="_blank">BonPote - Fake news sur la voiture électrique</a></li>
-          <li><a href="https://www.carbone4.com/analyse-faq-voiture-electrique" id="elecCar2Link" target="_blank">Carbone4 - FAQ voiture électrique</a></li>
-        </ul>
-
-        <p>Quel est l'impact de l'avion ?</p>
-        <ul>
-          <li><a href="https://www.greenpeace.fr/voyage-ecologique/reduire-ses-voyages-en-avion-une-solution-pour-climat/" id="plane1Link" target="_blank">GreenPeace - Réduire ses voyages en avion</a></li>
-          <li><a href="https://bonpote.com/10-chiffres-a-connaitre-sur-lavion-et-le-climat/" id="plane2Link" target="_blank">BonPote - 10 chiffres à connaitre sur l'avion et le climat</a></li>
-        </ul>
+        <br>
+        <a href="faq.html" id="documentLink" class="main-button">F.A.Q</a>
 
       </div>
     </div>
@@ -274,12 +245,13 @@
     <div class="logo"><img src="assets/img/favicon.svg" alt="maps-icon" width="48" height="48"></div>
       <p>Copyright © 2024 Arthur Kooshmanian </p>
       <a href="https://www.linkedin.com/in/arthur-kooshmanian-85b199207/"><ion-icon name="logo-linkedin"></ion-icon></a>
+      <a href="https://github.com/arthurooo38/co2-calculator"><ion-icon name="logo-github"></ion-icon></a>
   </footer>
 
 <!--Scripts Ionicons-->
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 <!--Scripts JS-->
-  <script src="Cities.js"></script> 
+  <script src="Cities_2.js"></script> 
   <script src="script.js"></script> 
 </body>
