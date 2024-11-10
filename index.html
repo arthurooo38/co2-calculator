@@ -78,7 +78,7 @@
       <h2>&#127757 Ton trajet</h2>
       <br>
       <div class="text-wrapper">
-        <p>Pour commencer à estimer l'impact de ta journée, quelle distance as-tu parcourue ?</p>
+        <p>Pour commencer à estimer l'impact de ton voyage, quelle distance as-tu parcourue ?</p>
       </div>
       <div class="wrapper-input-button">
         <div class="input-wrapper">
@@ -103,7 +103,12 @@
     <!--Train section-->
     <div class="output-section second card">
       <div id="trainTab" class="">
-        <h2>&#128646 Paramètres train</h2>
+        <div class="title-wrapper">
+          <h2>&#128646 Paramètres train</h2>
+        <div class="tooltip"><ion-icon name="help-outline"></ion-icon>
+          <span class="tooltiptext">Tooltip text</span>
+        </div> 
+        </div>
         <br>
         <!--Select type of trains-->
         <div class="input-wrapper">
@@ -118,7 +123,12 @@
 
       <!--Plane section-->
       <div id="planeTab" class="hidden">
-        <h2>&#128748 Paramètres avion</h2>
+        <div class="title-wrapper">
+          <h2>&#128748 Paramètres avion</h2>
+          <div class="tooltip"><ion-icon name="help-outline"></ion-icon>
+            <span class="tooltiptext">Tooltip text</span>
+          </div> 
+        </div>
         <br>
         <!--Select coefficient for planes-->
         <div class="input-wrapper">
@@ -132,14 +142,19 @@
 
       <!--Car section-->
       <div id="carTab" class="hidden">
+        <div class="title-wrapper">
         <h2>&#128663 Paramètres voiture</h2>
+        <div class="tooltip"><ion-icon name="help-outline"></ion-icon>
+          <span class="tooltiptext">Tooltip text</span>
+        </div> 
+        </div>
         <br>
         <div class="text-wrapper">
           <p>Quelques petites précisions ?</p>
         </div>
         <!--Select motor type fo cars-->
         <div class="input-wrapper">
-          <label for="typeCarSelect">- motorisation :</label>
+          <label for="typeCarSelect">- moteur :</label>
           <select name="typeCarSelect" id="typeCarSelect">
             <option value="fuel">Essence</option>
             <option value="diesel">Diesel</option>
@@ -148,7 +163,7 @@
         </div>
         <!--Select size car-->
         <div class="input-wrapper">
-          <label for="sizeCarSelect">- taille du véhicule :</label>
+          <label for="sizeCarSelect">- taille :</label>
           <select name="sizeCarSelect" id="sizeCarSelect">
             <option value="small">Citadine</option>
             <option value="medium">Moyenne</option>
@@ -157,7 +172,7 @@
         </div>
         <!--Select number of passengers of cars-->
         <div class="input-wrapper">
-          <label for="passengersCarSelect">- nombre de passagers :</label>
+          <label for="passengersCarSelect">- passagers :</label>
           <select name="passengersCarSelect" id="passengersCarSelect">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -168,7 +183,7 @@
         </div>
         <!--Select type of road of cars-->
         <div class="input-wrapper">
-          <label for="roadSelect">- nature de la route empruntée :</label>
+          <label for="roadSelect">- route empruntée :</label>
           <select name="roadSelect" id="roadSelect">
             <option value="city">En ville</option>
             <option value="both">Mixte</option>
@@ -180,7 +195,12 @@
       
       <!--Ferry section-->
       <div id="ferryTab" class="hidden">
-        <h2>&#128674 Paramètres ferry</h2>
+        <div class="title-wrapper">
+          <h2>&#128674 Paramètres ferry</h2>
+          <div class="tooltip"><ion-icon name="help-outline"></ion-icon>
+            <span class="tooltiptext">Tooltip text</span>
+          </div> 
+        </div>
         <br>
         <!--Select coefficient for ferries-->
         <div class="input-wrapper">
@@ -191,7 +211,12 @@
       
       <!--Bus section-->
       <div id="autocarTab" class="hidden">
-        <h2>&#128652 Paramètres autocar</h2>
+        <div class="title-wrapper">
+          <h2>&#128652 Paramètres autocar</h2>
+          <div class="tooltip"><ion-icon name="help-outline"></ion-icon>
+            <span class="tooltiptext">Tooltip text</span>
+          </div> 
+        </div>
         <br>
         <!--Select coefficient for buses-->
         <div class="input-wrapper">

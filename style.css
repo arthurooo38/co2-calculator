@@ -11,7 +11,7 @@
 navbar {
   display: flex;
   flex-direction: row;
-  width: 100%;
+  width: calc(100vw - 60px);
   align-content: center;
   align-items: center;
   justify-content: center;
@@ -23,7 +23,7 @@ navbar {
 }
 
 footer {
-  width: 100%;
+  width: calc(100vw - 60px);
   justify-content: center;
   display: flex;
   align-items: center;
@@ -31,12 +31,12 @@ footer {
   gap: 30px;
   border-top: solid 2px #eaeaea;
   background-color: white;
-
+  font-size: smaller;
 }
 
 h1 {
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: calc(19px + 0.390625vw);
   letter-spacing: 1px;
   padding: 20px 30px 20px 0px;
   font-weight: 800;
@@ -48,6 +48,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: calc(15px + 0.390625vw);
 }
 
 .card {
@@ -63,8 +64,8 @@ body {
 
 
 h2 {
-  font-size: 18px;
-  color: #212121;
+  font-size: calc(15px + 0.390625vw);
+  color: #A1A2AB;
   font-weight: 700;
   letter-spacing: 0.6px;
   margin: 0px 20px 0px 20px;
@@ -99,6 +100,7 @@ input {
   transition: 0.2s;
   max-width: 180px;
   border: solid 3px #eaeaea;
+  font-size: calc(12px + 0.390625vw);
 }
 
 input:focus {
@@ -118,6 +120,7 @@ select {
   color: black;
   border: solid 2px #eaeaea;
   box-shadow: 0px 3px #eaeaea;
+  font-size: calc(12px + 0.390625vw);
 }
 select:focus {
   outline: solid 2px #01796F;
@@ -128,7 +131,7 @@ a {
   color: black;
   text-decoration: none;
   font-weight: 600;
-  font-size: 16px;
+  font-size: calc(15px + 0.390625vw);
 }
 
 a:hover {
@@ -159,6 +162,7 @@ ul {
 
 .main-button {
   background-color: #01796F;
+  font-size: smaller;
   color: white;
   padding: 12px 20px;
   margin: 10px 0px;
@@ -176,14 +180,14 @@ ul {
 }
 
 .icon-button ion-icon {
-  font-size: 20px;
+  font-size: calc(19px + 0.390625vw);
   color: #ffffff;
 }
 
 .icon-button {
   position: absolute;
-  right: 14px;
-  top: 10px;
+  right: 15px;
+  top: 11px;
   background-color: #01796F;
   padding: 2px;
   display: flex;
@@ -202,6 +206,7 @@ ul {
   flex-direction: column;
   align-items: start;
 }
+
 dialog {
   position: fixed;
   left: 50%;
@@ -218,52 +223,16 @@ dialog::backdrop {
   align-items: center;
 }
 
-.img {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.legend {
-  font-size: 12px;
-  text-decoration: underline;
-}
-
-
-.questions-wrapper {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 360px;
-}
-
-.frequent-question {
-  border: none;
-  border-bottom: solid 2px transparent;
-  background-color: transparent;
-  cursor: pointer;
-  margin: 6px;
-  text-align: left;
-  transition: all 0.3s;
-}
-
-.frequent-question:hover {
-  border-bottom: solid 2px #01796F;
-}
-
-.selected-question {
-  border-bottom: solid 2px #01796F;
-  color: #01796F;
-  font-weight: 700;
+.first {
+  flex: 1 1 420px;
 }
 
 p {
-  margin-top: 8px;
-  margin-bottom: 8px;
+  margin-top: 12px;
+  margin-bottom: 12px;
 }
 h4 {
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 li {
   margin-bottom: 10px;
@@ -279,4 +248,48 @@ li {
   width: 32px;
   height: 32px;
   color: #002B28;
+}
+
+
+/* Tooltip CSS */
+
+.title-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+.tooltip {
+  position: relative;
+  font-size: smaller;
+  display: inline-block;
+  padding: 1px;
+  display: flex;
+  border-radius: 10px;
+  border: dotted 2px #002B28;
+  color: #002B28;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
