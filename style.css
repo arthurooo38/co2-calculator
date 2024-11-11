@@ -212,10 +212,21 @@ dialog {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
+  min-width: 400px;
+  min-height: 300px;
 }
 
 dialog::backdrop {
   background: rgba(0,0,0,.75);
+}
+
+
+.select2-container--default .select2-selection--single{
+  margin-bottom: 15px;
+}
+
+.select2-dropdown.select2-dropdown--below{
+  font-size: smaller;
 }
 
 .wrapper-input-button {
@@ -284,7 +295,7 @@ li {
   z-index: 1;
   top: 125%;
   left: 50%;
-  margin-left: -60px;
+  margin-left: -120px;
   opacity: 0;
   transition: opacity 0.3s;
 }

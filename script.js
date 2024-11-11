@@ -277,12 +277,16 @@ function openAutocarTab() {
 const selectCity1 = document.getElementById("selectCity1");
 const selectCity2 = document.getElementById("selectCity2");
 
-// Selectize js
-$(function () {
-  $('#selectCity1').selectize();
+// Select2 js
+$(document).ready(function() {
+  $("#selectCity2").select2({
+    dropdownParent: $("#modalSection")
+  });
 });
-$(function () {
-  $('#selectCity2').selectize();
+$(document).ready(function() {
+  $("#selectCity1").select2({
+    dropdownParent: $("#modalSection")
+  });
 });
 
 
