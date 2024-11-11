@@ -106,13 +106,13 @@
         <div class="title-wrapper">
           <h2>&#128646 Paramètres train</h2>
         <div class="tooltip"><ion-icon name="help-outline"></ion-icon>
-          <span class="tooltiptext">Tooltip text</span>
+          <span class="tooltiptext">Les données utilisées sont celles de la SNCF. <br>Chaque compagnie ferroviaire fonctionne différemment, mais peu de données sont disponibles à l'étranger. Cependant, les trajets longues distance dans les autres pays d'Europe semble avoir des valeurs semblables au TGV français.</span>
         </div> 
         </div>
         <br>
         <!--Select type of trains-->
         <div class="input-wrapper">
-          <label for="trainTypeSelect">Quel type de train était-ce ?</label>
+          <label for="trainTypeSelect">Type de train ?</label>
           <select name="trainTypeSelect" id="trainTypeSelect">
             <option value="ter">TER</option>
             <option value="tgv">TGV</option>
@@ -126,13 +126,13 @@
         <div class="title-wrapper">
           <h2>&#128748 Paramètres avion</h2>
           <div class="tooltip"><ion-icon name="help-outline"></ion-icon>
-            <span class="tooltiptext">Tooltip text</span>
+            <span class="tooltiptext">Quand un avion vole dans le ciel, il laisse parfois derrière lui de longs nuages blancs. Ce sont les trainées de condensation. <br> Ces trainées de condensation, qui sont en fait de l'humidité, ont un impact important sur le climat en empêchant la chaleur de s'échapper de la Terre. Cet impact est difficile à estimer car ces trainées sont très variables d'un vol à l'autre. <br> Les études les plus récentes estiment qu'en moyenne, l'impact climatique est environ doublé!</span>
           </div> 
         </div>
         <br>
         <!--Select coefficient for planes-->
         <div class="input-wrapper">
-          <label for="multiPlaneSelect">Et les trainées de condensation ?</label>
+          <label for="multiPlaneSelect">Les trainées de condensation ?</label>
           <select name="multiPlaneSelect" id="multiPlaneSelect">
             <option value="x0">Sans</option>
             <option selected value="x2">Avec</option>
@@ -145,16 +145,13 @@
         <div class="title-wrapper">
         <h2>&#128663 Paramètres voiture</h2>
         <div class="tooltip"><ion-icon name="help-outline"></ion-icon>
-          <span class="tooltiptext">Tooltip text</span>
+          <span class="tooltiptext">De nombreux facteurs influent sur l'impact climatique d'une voiture. <br> Il est important de noter qu'une voiture Diesel émet moins de CO2 mais émet plus de particules fines, moins nocif pour le climat mais nocif pour la santé. <br> On précisera aussi qu'une voiture électrique a très peu d'impact direct sur le climat lors de sa circulation, mais a un impact plus important qu'une voiture thermique lors de sa fabrication et son recyclage. On estime cependant que l'impact total d'une voiture électrique est bien inférieur à celui d'une voiture thermique. <br>Une solution est donc de limiter ses déplacement et privilégier les petites voitures.</span>
         </div> 
         </div>
         <br>
-        <div class="text-wrapper">
-          <p>Quelques petites précisions ?</p>
-        </div>
         <!--Select motor type fo cars-->
         <div class="input-wrapper">
-          <label for="typeCarSelect">- moteur :</label>
+          <label for="typeCarSelect">Moteur ?</label>
           <select name="typeCarSelect" id="typeCarSelect">
             <option value="fuel">Essence</option>
             <option value="diesel">Diesel</option>
@@ -163,7 +160,7 @@
         </div>
         <!--Select size car-->
         <div class="input-wrapper">
-          <label for="sizeCarSelect">- taille :</label>
+          <label for="sizeCarSelect">Taille ?</label>
           <select name="sizeCarSelect" id="sizeCarSelect">
             <option value="small">Citadine</option>
             <option value="medium">Moyenne</option>
@@ -172,7 +169,7 @@
         </div>
         <!--Select number of passengers of cars-->
         <div class="input-wrapper">
-          <label for="passengersCarSelect">- passagers :</label>
+          <label for="passengersCarSelect">Nb de passagers ?</label>
           <select name="passengersCarSelect" id="passengersCarSelect">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -183,7 +180,7 @@
         </div>
         <!--Select type of road of cars-->
         <div class="input-wrapper">
-          <label for="roadSelect">- route empruntée :</label>
+          <label for="roadSelect">Route empruntée ?</label>
           <select name="roadSelect" id="roadSelect">
             <option value="city">En ville</option>
             <option value="both">Mixte</option>
@@ -198,7 +195,7 @@
         <div class="title-wrapper">
           <h2>&#128674 Paramètres ferry</h2>
           <div class="tooltip"><ion-icon name="help-outline"></ion-icon>
-            <span class="tooltiptext">Tooltip text</span>
+            <span class="tooltiptext">Les compagnies de ferry sont peu transparents sur leurs émissions. <br>On peut cependant affirmer que c'est un transport très polluant. <br>Afin de limiter l'impact du ferry, privilégier des courtes distances et éviter de transporter votre voiture (poids supplémentaires non négligeables).</span>
           </div> 
         </div>
         <br>
@@ -214,7 +211,7 @@
         <div class="title-wrapper">
           <h2>&#128652 Paramètres autocar</h2>
           <div class="tooltip"><ion-icon name="help-outline"></ion-icon>
-            <span class="tooltiptext">Tooltip text</span>
+            <span class="tooltiptext">L'impact par passager d'un voyage en autocar est globalement plus faible qu'une voiture, puisqu'il permet de transporter beaucoup de gens.</span>
           </div> 
         </div>
         <br>
